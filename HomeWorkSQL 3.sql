@@ -1,5 +1,7 @@
 -- 1. Вывести всех работников чьи зарплаты есть в базе, вместе с зарплатами.
 
+                       --VERSION
+                       
 select employees.employee_name, salary.monthly_salary
 from employee_salary
 join salary 
@@ -8,6 +10,8 @@ left join employees
 on employee_salary.employee_id = employees.id
 where employee_name is not null;
 
+                       --VERSION
+                       
 select employees.employee_name, salary.monthly_salary 
 from employees
 join employee_salary
@@ -16,6 +20,8 @@ join salary
 on salary.id = employee_salary.salary_id 
 where salary.monthly_salary is not null;
 
+                       --VERSION
+                       
 select employee_name, monthly_salary
 from employees 
 join employee_salary
@@ -25,6 +31,8 @@ on salary_id = salary.id;
 
 -- 2. Вывести всех работников у которых ЗП меньше 2000.
 
+                       --VERSION
+                       
 select employees.employee_name, salary.monthly_salary 
 from employees
 join employee_salary
@@ -33,6 +41,8 @@ join salary
 on salary.id = employee_salary.salary_id 
 where salary.monthly_salary < 2000;
 
+                       --VERSION
+                       
 select employee_name, monthly_salary
 from employees 
 join employee_salary
@@ -132,6 +142,8 @@ where role_name like '%Automation_QA%';
 
 -- 12. Вывести имена и зарплаты Junior специалистов
 
+                       --VERSION
+                       
 select employees.employee_name, role_name, salary.monthly_salary
 from employee_salary
 join salary on employee_salary.salary_id = salary.id
@@ -140,6 +152,8 @@ join roles_employee on roles_employee.employee_id = employees.id
 join roles on roles.id = roles_employee.role_id
 where roles.role_name like '%Junior%';
 
+                       --VERSION
+                       
 select employee_name, role_name, monthly_salary
 from employee_salary 
 join employees on employee_salary.employee_id  = employees.id
@@ -271,34 +285,48 @@ where role_name like '%QA%';
 
 -- 25. Вывести количество QA инженеров
 
+                       --VERSION
+                       
 select COUNT(role_name)
 from roles
 where role_name like '%QA%';
 
+                       --VERSION
+                       
 select COUNT(role_name)
 from roles join roles_employee on roles_employee.role_id = roles.id
 where role_name like '%QA%';
 
+                      -- VERSION
+                       
 select count(role_name)
 from roles join roles_employee on roles.id = role_id
 where role_name like '%QA_engineer';
 
 -- 26. Вывести количество Middle специалистов.
 
+                       --VERSION
+                       
 select COUNT(role_name)
 from roles
 where role_name like '%Middle%';
 
+                       --VERSION
+                       
 select count(role_name)
 from roles join roles_employee on roles.id = role_id
 where role_name like '%Middle%';
 
 -- 27. Вывести количество разработчиков
 
+                      --VERSION
+                       
 select COUNT(role_name)
 from roles
 where role_name like '%developer%';
 
+                      --VERSION
+                       
 select COUNT(role_name)
 from roles join roles_employee on roles_employee.role_id = roles.id
 where role_name like '%developer%';
@@ -337,8 +365,8 @@ where monthly_salary <= 2300 and monthly_salary >= 1700
 group by employees.employee_name, roles.role_name, salary.monthly_salary
 order by monthly_salary;
 
---OR
-
+                      --VERSION
+                       
 select employee_name, role_name, monthly_salary
 from employee_salary 
 join employees on employee_salary.employee_id  = employees.id
